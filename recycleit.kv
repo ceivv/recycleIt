@@ -1,0 +1,59 @@
+#:import MapView kivy.garden.mapview.MapView
+ScreenManager:
+		MainScreen:
+		SearchScreen:
+		AboutScreen:
+
+<MainScreen>:
+		name: 'Main'
+		MDLabel:
+				text: "RecycleIt"
+				haling: 'center'
+				pos_hint :{'center_x':0.5,'center_y':0.9}
+		MDRectangleFlatButton:
+				text : "search"
+				pos_hint :{'center_x':0.5,'center_y':0.5}
+				on_press: root.manager.current = 'Search'
+		MDRectangleFlatButton:
+				text : "about"
+				pos_hint :{'center_x':0.5,'center_y':0.4}
+				on_press: root.manager.current = 'About'
+<SearchScreen>:
+		name: 'Search'
+		MDLabel:
+				text:"search"
+				haling:'center'
+				pos_hint :{'center_x':0.5,'center_y':0.4}
+		MDCard:
+				size_hint:None,None
+				size:340,420
+				size_hint:(0.9,0.7)
+				elevation:7
+				pos_hint :{'center_x':0.5,'center_y':0.5}
+				MapView:
+						lat: 36.81897
+						lon : 10.16579
+						zoom : 8
+						on_zoom : 5
+						MapMarkerPopup:
+								lat: 36.81897
+								lon : 10.16579
+		MDRectangleFlatButton:
+				text : "back"
+				pos_hint :{'center_x':0.5,'center_y':0.1}
+				on_press: root.manager.current = 'Main'
+
+
+<AboutScreen>:
+		name :'About'
+		MDLabel:
+				text:"Made with love by Ceiv\nto make Tunisia a better\nplace."
+				halign: 'center'
+				pos_hint:{'center_x':.5,'center_y':.5}
+		MDRectangleFlatButton:
+				text: 'back'
+				pos_hint: {'center_x':.5,'center_y':.4}
+				on_press: root.manager.current = 'Main'
+
+
+
